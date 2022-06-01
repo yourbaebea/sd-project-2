@@ -20,6 +20,7 @@ public class Team {
     int wins;
     int loses;
     int draws;
+    int total;
 
     @OneToMany(mappedBy="team")
     List<Player> player;
@@ -35,6 +36,7 @@ public class Team {
         this.wins=0;
         this.loses=0;
         this.draws=0;
+        this.total=0;
 
     }
 
@@ -47,6 +49,7 @@ public class Team {
         this.wins=0;
         this.loses=0;
         this.draws=0;
+        this.total=0;
     }
 
     public void setName(String name) {
@@ -112,7 +115,15 @@ public class Team {
         this.loses++;
     }
 
+    public void addTotal() {
+        this.total++;
+    }
 
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
-
+    public int getTotal() {
+        return total;
+    }
 }

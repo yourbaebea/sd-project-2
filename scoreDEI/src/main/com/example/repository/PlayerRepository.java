@@ -20,7 +20,7 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
     @Query("SELECT distinct t.name, COUNT(t.name) FROM Game g, Team t WHERE g.over=true AND (g.team1=?1 OR g.team2=?1) GROUP BY t.name")
     List<Object> countTotalTeamGames();
 
-    @Query("select distinct p from Player p, Game g, Team t where g.id = ?1 and (g.team1 = t.id or g.team2 = t.id) and p.team = t.id")
+    @Query("select distinct p from Player p, Game g, Team t where g.id = ?1 and (g.team1 = t.id or g.team2 = t.id) and p.team = t.id ORDER BY p.id ASC")
     List<Player> playersInGame(int id);
 
     @Query("select p from Player p where p.team.id = ?1")

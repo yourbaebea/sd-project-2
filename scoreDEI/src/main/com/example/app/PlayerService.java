@@ -18,6 +18,7 @@ public class PlayerService
     public List<Player> getAllPlayers()
     {
         List<Player>playerRecords = new ArrayList<>();
+
         playerRepository.findAll().forEach(playerRecords::add);
         return playerRecords;
     }

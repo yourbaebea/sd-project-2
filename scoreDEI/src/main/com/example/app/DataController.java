@@ -380,6 +380,8 @@ public class DataController {
             }
 
         }
+        g.getTeam1().addTotal();
+        g.getTeam2().addTotal();
 
         this.teamService.saveTeam(g.getTeam1());
         this.teamService.saveTeam(g.getTeam2());
