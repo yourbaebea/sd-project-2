@@ -1,24 +1,23 @@
 # scoreDEI SD 2021/22
-Resultados desportivos em direto
+Sports Events in Real Time
 
-### entrega: 31-05-2022
+# SPORTS API
+- https://www.api-football.com/
+- https://dashboard.api-football.com/
 
-# links importantes
-- Relatório: https://docs.google.com/document/d/1unfcQwP5vCyjaWSZMamH9XdIAw1IwKNErWtUGzwy5MY/edit?usp=sharing
+# configure
+
+- [ ] Change {spring.datasource} url, username and password in application.properties
+- [ ] Change {sports-api.key} in application.properties
+- [ ] Reload Maven
+- [ ] Change Project Structure (source: src\main; test: src\test)
 
 # run
-- application.properties: change port, user and password of db
-- reload mvn: pom.xml ->maven->update project
-- proj structure: make sure of the source and the test folder
-- change create to update in properties (spring.jpa.hibernate.ddl-auto=update)
-- ./mvnw spring-boot:run OR on the run in intj
+first time
+- [ ] Change {spring.jpa.hibernate.ddl-auto} to create in application.properties
+- [ ] ./mvnw spring-boot:run OR on the run in intj
 
-
-# compile NOT DONE YET this is from the last one
-
-- create artifact (in intelj): file < Project Structure < Artifacts < + 
-- build project
-- java -jar {directorytojar}\file.jar [arguments here]
+change back to update after the first time so the database doesn't reset
 
 #
 
