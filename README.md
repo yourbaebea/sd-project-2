@@ -7,8 +7,9 @@ Resultados desportivos em direto
 - Relatório: https://docs.google.com/document/d/1unfcQwP5vCyjaWSZMamH9XdIAw1IwKNErWtUGzwy5MY/edit?usp=sharing
 
 # run
-- in resources change port and password
-- proj structure make sure of the source and the test folder
+- application.properties: change port, user and password of db
+- reload mvn: pom.xml ->maven->update project
+- proj structure: make sure of the source and the test folder
 - change create to update in properties (spring.jpa.hibernate.ddl-auto=update)
 - ./mvnw spring-boot:run OR on the run in intj
 
