@@ -1,0 +1,28 @@
+body {
+    background: lightyellow;
+    font: 18px Arial, sans-serif;
+}
+
+button {
+    background-color: #648dad;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    margin-left: 43%;
+}
+button:hover {
+    background-color: #4caf50;
+    color: white;
+}
+
+p{
+    font-family: "Segoe UI Semibold";
+    font-size: 40px;
+    text-align: center;
+}

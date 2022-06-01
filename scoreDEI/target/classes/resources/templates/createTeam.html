@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<h1 style=" font-family: 'Segoe UI Semibold';font-size: 30px;">Criar/Editar Equipa</h1>
+<form th:action="@{/saveTeam}" th:object="${team}" method="post">
+    <div>
+        <div>
+            <input type="hidden" th:field="*{id}">
+        </div>
+        <label style=" font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Name</label>
+        <input style=" margin-left: 15px;margin-top: 15px;" type="text" th:field="*{name}">
+    </div>
+
+
+    <button style="padding: 10px 43px; margin-left:15px;margin-top: 30px;" type="submit">Criar/Editar Equipa</button>
+
+</form>
+
+
+<form th:action="@{/listTeams}" method="GET">
+    <button style="padding: 10px 43px; margin-left:15px;margin-top: 15px;" type="submit">Voltar</button>
+</form>
+
+</body>
+</html>

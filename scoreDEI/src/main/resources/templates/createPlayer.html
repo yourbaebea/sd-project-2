@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h1 style=" font-family: 'Segoe UI Semibold';font-size: 30px;">Criar/Editar Jogador</h1>
+<form th:action="@{/savePlayer}" th:object="${player}" method="post">
+    <div>
+        <div>
+            <input type="hidden" th:field="*{id}">
+        </div>
+        <label style=" font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;" >Nome</label>
+        <input style=" margin-left: 15px;margin-top: 15px;" type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label style=" font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;" >Aniversario</label>
+        <input style=" margin-left: 15px;margin-top: 15px;" type="date" th:field="*{birthdate}">
+    </div>
+
+    <div >
+        <p style="font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Selecione a posicao:</p>
+          <input style="margin-left: 15px;" th:field="*{position}" type="radio" id="avancado"value="avancado">
+          <label style="font-family: 'Segoe UI';font-size: 15px; margin-left: 15px;" for="avancado">Avancado</label><br>
+          <input style="margin-left: 15px;" th:field="*{position}" type="radio" id="redes" value="Guarda-Redes">
+          <label style="font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;"for="redes">Guarda-Redes</label><br>
+          <input style="margin-left: 15px;" th:field="*{position}" type="radio" id="defesa"value="Defesa">
+          <label style="font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;" for="defesa">Defesa</label><br>
+          <input style="margin-left: 15px;" th:field="*{position}" type="radio" id="medio"value="Medio">
+          <label style="font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;" for="medio">Medio</label>
+    </div>
+
+    <div style="margin-top: 15px">
+        <label style="margin-right: 10px; vertical-align: top; font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;" >Equipa</label>
+        <select style="padding: 0px 20px" id="team" th:field="*{team}">
+            <option th:each="team : ${allTeams}"
+                    th:value="${{team}}"
+                    th:text="${team.name}">
+                The name
+            </option>
+        </select>
+
+    </div>
+
+    <button style="padding: 10px 43px; margin-left:15px;margin-top: 30px;" type="submit">Criar/Editar Jogador</button>
+    </div>
+</form>
+
+<form th:action="@{/listPlayers}" method="GET">
+    <button style="padding: 10px 43px; margin-left:15px;margin-top: 15px;" type="submit">Voltar</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h1 style=" font-family: 'Segoe UI Semibold';font-size: 30px;">Jogador que levou cartao</h1>
+<form th:action="@{/saveEvent}" th:object="${event}" method="post">
+
+    <div>
+        <input type="hidden" th:field="*{type}">
+    </div>
+    <div>
+        <input type="hidden" th:field="*{game}">
+    </div>
+    <div>
+        <input type="hidden" th:field="*{date}">
+    </div>
+    <div style="margin-top: 15px">
+        <label style="vertical-align: top; font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px; margin-right: 10px">Jogador</label>
+            <select style="padding: 0px 20px" id="player" th:field="*{player}">
+                <option th:each="player : ${players}"
+                        th:value="${{player}}"
+                        th:text="${player.name}">
+                    The name
+                </option>
+            </select>
+
+    </div>
+    <div>
+        <button style="padding: 10px 43px; margin-left:15px;margin-top: 30px;" type="submit">Adicionar evento</button>
+    </div>
+
+
+</form>
+
+<form th:action="@{/addEvent}" method="GET">
+    <button style="padding: 10px 43px; margin-left:15px;margin-top: 15px;" type="submit">Voltar</button>
+</form>
+
+</body>
+</html>

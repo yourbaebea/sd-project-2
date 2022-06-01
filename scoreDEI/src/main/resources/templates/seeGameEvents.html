@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>ScoreDei</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{menuStart}">ScoreDei</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{menuStart}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{seeStatistics}">Statistics</a></li>
+                </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>Game Detais and Events</h1>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="text-left mt-5">
+
+                    <div class="card" style="width: 16rem; background-color:#c5f9fc; margin-bottom: 20px">
+                        <div class="card-body">
+                            <h4 class="card-title" th:text="${game.team1.name + ' ' + 'x' + ' ' + game.team2.name}"></h4>
+                            <h5 class="card-title">Result</h5>
+                            <p class="card-text" th:text="${game.result1 + ' ' + '-' + ' ' + game.result2}"></p>
+                            <h5 class="card-title">Location</h5>
+                            <p class="card-text" th:text="${game.place}"></p>
+                            <h5 class="card-title">Start Time</h5>
+                            <p class="card-text" th:text="${game.time}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-8">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Event</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Team</th>
+                        <th scope="col">Player</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="border-style: groove" th:each="event : ${events}">
+
+                        <td th:switch="${event.type}">
+                            <span th:case="1">Started Game</span>
+                            <span th:case="2" >Ended Game</span>
+                            <span th:case="3" >Goal</span>
+                            <span th:case="4" >Yellow Card</span>
+                            <span th:case="5" >Red Card</span>
+                            <span th:case="6" >Paused Game</span>
+                            <span th:case="7" >Resumed Game</span>
+                        </td>
+                        <td th:text="${event.time}">date</td>
+                        <td th:if="${event.team}" th:text="${event.team.name}"></td>
+                        <td th:unless="${event.team}" >---</td>
+                        <td th:if="${event.player}" th:text="${event.player.name}"></td>
+                        <td th:unless="${event.player}" > </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a class="btn btn-outline-info btn-lg" type="submit" th:href="@{seeGameEvents(id=${game.id})}">Update</a>
+
+
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

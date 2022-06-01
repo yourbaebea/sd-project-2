@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>ScoreDei</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{menuStart}">ScoreDei</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{menuAdmin}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{seeStatistics}">Statistics</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{registerUser}">Register</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{listPlayers}">Players</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{listGames}">Games</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{listTeams}">Teams</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{menuStart}">Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>New Game</h1>
+        <form th:action="@{/saveGame}" th:object="${formgame}" method="post">
+            <div>
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                </div>
+
+            </div>
+            <div>
+
+                <div th:if= "${formgame.time}">
+                    <label style=" font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Date</label>
+                    <input style=" margin-left: 15px;margin-top: 15px;"  th:value="*{time}" type="datetime-local" th:field="*{time}">
+                    <label style=" font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Place</label>
+                    <input style=" margin-left: 15px;margin-top: 15px;" type="text"  th:value="${formgame.place}" th:field="*{place}">
+                    <div style="margin-top: 15px">
+                        <label style="margin-right: 10px; vertical-align: top; font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Team 1</label>
+                        <select style="padding: 0px 20px" id="team1" th:value="*{team1}" th:field="*{team1}">
+                            <option th:each="team : ${allTeams}"
+                                    th:value="${{team}}"
+                                    th:text="${team.name}">
+                                The name
+                            </option>
+                        </select>
+
+                    </div>
+                    <div style="margin-top: 15px">
+                        <label style="margin-right: 10px;vertical-align: top; font-family: 'Segoe UI';font-size: 15px; margin-top: 15px;margin-left: 15px;">Team 2</label>
+                        <select style="padding: 0px 20px" id="team2" th:value="*{team1}" th:field="*{team2}">
+                            <option th:each="team : ${allTeams}"
+                                    th:value="${{team}}"
+                                    th:text="${team.name}">
+                                The name
+                            </option>
+                        </select>
+                    </div>
+                    <button button style="padding: 10px 43px; margin-left:15px;margin-top: 30px;" type="submit">Editar jogo</button>
+
+
+                </div>
+                <div th:unless="${formgame.time}">
+                    <label >Data</label>
+                    <input  th:value="*{time}" type="datetime-local" th:field="*{time}">
+                    <label >Local</label>
+                    <input  type="text"  th:field="*{place}">
+                    <div >
+                        <label >Team 1</label>
+                        <select id="team1" th:field="*{team1}">
+                            <option th:each="team : ${allTeams}"
+                                    th:value="${{team}}"
+                                    th:text="${team.name}">
+                                The name
+                            </option>
+                        </select>
+
+                    </div>
+                    <div>
+                        <label >Team 2</label>
+                        <select id="team2" th:field="*{team2}">
+                            <option th:each="team : ${allTeams}"
+                                    th:value="${{team}}"
+                                    th:text="${team.name}">
+                                The name
+                            </option>
+                        </select>
+                    </div>
+                    <button class="btn btn-info" type="submit">Confirm</button>
+
+                </div>
+            </div>
+
+
+
+        </form>
+        <form th:action="@{/listGames}" method="GET">
+            <button class="btn btn-info" type="submit">Back</button>
+        </form>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>
